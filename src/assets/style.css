@@ -1,0 +1,184 @@
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+.login-cover {
+  background-image: url('./jumbotron.jpg');
+  background-size: contain;
+}
+
+.result{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.login-overlay {
+  padding: 30px;
+}
+.login-overlay h1 {
+  font-size: 50px;
+}
+.input-wrapper {
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+}
+.input-wrapper .form-group {
+  margin-bottom: 0;
+}
+.input-wrapper input{
+  border: 0;
+}
+.login-form .right-btn {
+  background-color:  #1f1f1f;
+  color: white;
+  border-radius: 5px;
+}
+.login-form .right-btn:hover {
+  background-color: white;
+  color:  #1f1f1f;
+  border: 1px solid  #1f1f1f;
+  border-radius: 5px;
+}
+.login-form .left-btn {
+  background-color: white;
+  color:  #1f1f1f;
+  border: 1px solid  #1f1f1f;
+  border-radius: 5px;
+}
+.login-form .left-btn:hover {
+  background:  #1f1f1f;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+}
+.half-cover {
+  height: 350px;
+  /* background-color:  #1f1f1f; */
+}
+.bg-cover {
+  background-size: cover;
+  height: 350px;
+}
+.option-btn a {
+  color: white;
+}
+.full-cover img{
+  width: 230px;
+  height: 319px;
+  margin-top: -200px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+}
+.book-details {
+  margin-top: -50px;
+}
+.badge-detail {
+  background-color:  #1f1f1f;
+}
+.btn-borrow {
+  border: 2px solid  #1f1f1f;
+  color:  #1f1f1f;
+}
+.btn-borrow:hover {
+  background-color:  #1f1f1f;
+  color: white;
+}
+.sidebar {
+  box-shadow: 2px 5px 5px rgba(0,0,0,0.5);
+  background-color:  #1f1f1f;
+  color: white;
+}
+.profile-img img{
+  border-radius: 50px;
+}
+.sidebar-list {
+  list-style-type: none;
+}
+.nav-dashboard {
+  box-shadow: 2px 5px 5px rgba(0,0,0,0.5);
+  background-color: #3a3a3a;
+  color: white;
+}
+.btn-search {
+  background-color:  #1f1f1f;
+  color: white;
+  border: 1px solid white;
+}
+.btn-search:hover {
+  background-color:  #1f1f1f;
+  color: white;
+  border: 1px solid white;
+}
+.carousel-books {
+  background-color:  #1f1f1f;
+}
+
+.card-img {
+  width: 235px;
+  height: 200px;
+}
+.card-title a{
+  color: black;
+}
+.btn-add-admin {
+  background-color:  #1f1f1f;
+  color: white;
+}
+.btn-add-admin:hover {
+  background-color: rgb(78, 78, 78);
+  color: white;
+}
+.btn-sort button {
+  background-color:  #1f1f1f;
+  color: white;
+}
+.btn-sort button:hover {
+  background-color: rgb(70, 70, 70);
+  color: white;
+}
+.detail-wrapper {
+  height: 330px;
+}
+.jumbotron-content {
+  padding-bottom: 100px;
+}
+.find-book {
+  border-radius: 0;
+  border: none;
+  border-bottom: 4px solid  #1f1f1f;
+}
+.btn-go {
+  background-color: white;
+  border: 2px solid  #1f1f1f;
+  color:  #1f1f1f;
+}
+.btn-go:hover {
+  background-color:  #1f1f1f;
+  color: white;
+}
+.card-landing {
+  width: 335px;
+}
+.card-img-landing {
+  width: 335px;
+  height: 200px;
+}
+.btn-sort, .pagination-btn button {
+  background-color:  #1f1f1f;
+  color: white;
+}
+.btn-sort:hover, .pagination-btn button:hover {
+  background-color: rgb(78, 78, 78);
+  color: white;
+}
+.footer {
+  margin-top: 50px;
+  height: 50px;
+  background-color: #1f1f1f;
+}
+
+.line-copyright {
+  border: 10px solid #fff;
+  width: 20px;
+}

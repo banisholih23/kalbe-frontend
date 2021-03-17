@@ -26,7 +26,7 @@ class Login extends Component {
     this.props
       .loginUser(email, password)
       .then((response) => {
-        this.props.history.push("/dashboard");
+        this.props.history.push("/");
         swal.fire({
           icon: "success",
           title: "Success",
@@ -56,7 +56,7 @@ class Login extends Component {
               <div className="flex-grow-1 d-flex justify-content-center align-items-center">
                 <Form className="login-form mb-5" onSubmit={this.loginUser}>
                   <h1>Login</h1>
-                  <h3>Banis Budget App</h3>
+                  <h3>Kalbe Online Shop</h3>
                   <p>Welcome Back, Please Login to your account! :)</p>
                   <div className="input-wrapper no-gutter">
                     <FormGroup className="form-group">

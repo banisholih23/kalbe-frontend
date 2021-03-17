@@ -3,17 +3,21 @@ import NavbarTop from "../components/Navbar";
 import {
   Row,
   Col,
-  Jumbotron,
   Card,
   CardTitle,
   Button,
+  CardDeck,
+  CardBody,
+  CardText,
 } from "reactstrap";
 import swal from "sweetalert2";
 import qs from "querystring";
 import jwt from "jsonwebtoken";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { getUser } from "../redux/actions/user";
+import { getProduct } from "../redux/actions/product";
 import { logoutAuth } from "../redux/actions/login";
 
 export class Dashboard extends Component {
@@ -43,6 +47,11 @@ export class Dashboard extends Component {
     });
   };
 
+  fetchProduct = (params) => {
+    const param = `${qs.stringify(params)}`;
+    this.props.getProduct(param).then((response) => {});
+  };
+
   checkLogin = () => {
     if (this.props.login.token === null) {
       this.props.history.goBack();
@@ -55,15 +64,17 @@ export class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.checkLogin();
+    // this.checkLogin();
     const param = qs.parse(this.props.location.search.slice(1));
     this.fetchData(param);
+    this.fetchProduct();
   }
 
   render() {
     const { isLoading } = this.props.user;
-    const { name, income, expenses, balance } = this.props.login.dataLogin;
-  
+    const { dataProduct } = this.props.product;
+    // const { name, income, expenses, balance } = this.props.login.dataLogin;
+
     return (
       <>
         <Row className="d-flex flex-column w-100">
@@ -78,52 +89,58 @@ export class Dashboard extends Component {
               </div>
             </center>
           ) : (
-            <div>
+            <div className="mt-5">
               <Col>
-                <Jumbotron className="ml-5">
-                  <h3 className="display-3 mt-3">Hello {name}</h3>
-                  <p className="lead">
-                    Welcome to Banis Budget App <br />
-                    This is your accounting
-                  </p>
-                </Jumbotron>
+                <div className="d-flex justify-content-between container">
+                  <div className="mt-5">
+                    <h4>List Product</h4>
+                  </div>
+                </div>
               </Col>
               <Col>
-                <div className="container">
-                  <Row className="text-center">
-                    <Col sm="4">
-                      <Card body>
-                        <CardTitle tag="h5">Income</CardTitle>
-                        <div className="result">
-                          Rp. {parseFloat(income)
-                            .toFixed(2)
-                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                        </div>
-                        <Button>Go somewhere</Button>
-                      </Card>
-                    </Col>
-                    <Col sm="4">
-                      <Card body>
-                        <CardTitle tag="h5">Expenses</CardTitle>
-                        <div className="result">
-                          Rp. {parseFloat(expenses)
-                            .toFixed(2)
-                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                        </div>
-                        <Button>Go somewhere</Button>
-                      </Card>
-                    </Col>
-                    <Col sm="4">
-                      <Card body>
-                        <CardTitle tag="h5">Balance</CardTitle>
-                        <div className="result">
-                          Rp. {parseFloat(balance)
-                            .toFixed(2)
-                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                        </div>
-                        <Button>Go somewhere</Button>
-                      </Card>
-                    </Col>
+                <div className="container w-100">
+                  <Row>
+                    <CardDeck>
+                      {dataProduct.map((prod, index) => (
+                        <Col className="mt-4" md={4} key={index}>
+                          <Card>
+                            {/* <CardImg
+                              top
+                              width="100%"
+                              src={prod.picture}
+                              alt="Card image cap"
+                            /> */}
+                            <CardBody>
+                              <CardTitle>
+                                <h4>
+                                  <Link
+                                    to={{
+                                      pathname: `/detail/${prod.id}`,
+                                      state: {
+                                        id: `${prod.id}`,
+                                        name: `${prod.name}`,
+                                        quantity: `${prod.quantity}`,
+                                        price: `${prod.price}`,
+                                      },
+                                    }}
+                                    className="text-black"
+                                  >
+                                    {prod.name}
+                                  </Link>
+                                </h4>
+                              </CardTitle>
+                              <CardText className="font-weight-bold">
+                                Stok : {prod.quantity}
+                              </CardText>
+                              <CardText>Harga: {prod.price}</CardText>
+                              <Button style={{ weight: 100 }} color="primary">
+                                Order
+                              </Button>
+                            </CardBody>
+                          </Card>
+                        </Col>
+                      ))}
+                    </CardDeck>
                   </Row>
                 </div>
               </Col>
@@ -145,8 +162,9 @@ export class Dashboard extends Component {
 const mapStateToProps = (state) => ({
   user: state.user,
   login: state.login,
+  product: state.product,
 });
 
-const mapDispatchToProps = { getUser, logoutAuth };
+const mapDispatchToProps = { getUser, logoutAuth, getProduct };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

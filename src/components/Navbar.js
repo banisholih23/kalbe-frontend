@@ -9,7 +9,7 @@ import {
   Modal,
   ModalBody,
   ModalFooter,
-  Nav
+  Nav,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import jwt from "jsonwebtoken";
@@ -48,13 +48,19 @@ export class NavbarTop extends Component {
         <Col className="w-100">
           <Navbar className="nav-dashboard fixed-top" light expand="md">
             <Link to="/dashboard" className="navbar-brand text-white">
-              Banis Budget App
+              Kalbe Online Shop
             </Link>
             <NavbarToggler onClick={this.toggleNavbar} />
             <Collapse isOpen={this.state.showNavbar} navbar>
               <Nav className="mr-auto ml-2" navbar></Nav>
               <span className="navbar-text">
                 <Form className="form-inline">
+                  <Link to="/login">
+                    <Button className="mr-2" color="success">Login</Button>
+                  </Link>
+                  <Link to="/register">
+                    <Button className="mr-2" color="info">Register</Button>
+                  </Link>
                   <Button
                     onClick={this.toggleLogoutModal}
                     className="btn-danger form-control mr-sm-2"
